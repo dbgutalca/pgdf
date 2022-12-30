@@ -7,7 +7,7 @@ This repository has two tools for the conversion of property graph formats.
 
 ImportCSVtoPGDF Converter is a Java library for converting a property graph stored in CSV files to PGDF.  It expects an input directory containing a file configuration schema in JSON format to parse CSV files and an output directory will be created pgdf.
 
-The input files need to be UTF-8 encoded. The library is available as executable Jar file and can be run from the command line by `java -jar CSVtoPGDF.jar <JSON schema directory> <output directory>.
+The input files need to be UTF-8 encoded. The library is available as executable Jar file and can be run from the command line by `java -jar CSVtoPGDF.jar JSON schema directory output directory.
 
 
 The schema file in JSON format is to represent the CSV files of the LDBC benchmark data sets (https://github.com/ldbc/data-sets-surf-repository) in particular the SNB Interactive v1 files: CsvComposite serializer using LongDateFormatter. 
@@ -70,4 +70,4 @@ The JSON schema has an array of Node objects and an array of edge objects. This 
 
 PGConverter is other Java library for converting a property graph stored in PGDF file to different data format (GRAPHSON, XML, JSON and YARS-PG). It expects the conversion method of the property graph (object-based, disk-based or direct conversion), the data format to be converted, an input directory containing a PGDF file and the output directory will be created data format converted.
 
-The library is available as executable Jar file and can be run from the command line by `java -jar PGConverter --<disk> --<json> <PGDF directory> <output directory>.
+The library is available as executable Jar file and can be run from the command line by `java -jar PGConverter --disk --json PGDF directory output directory.
