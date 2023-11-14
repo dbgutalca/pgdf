@@ -1,0 +1,269 @@
+{ "nodes": [
+	{
+		"id": 1,
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/dynamic/comment_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"labels": ["comment"],
+		"properties": ["@id", "creationDate", "locationIP", "browserUsed", "content", "length"]
+	},{
+		"id": 2,
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/dynamic/forum_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"labels": ["forum"],
+		"properties": ["@id", "title" , "creationDate"]
+	},{
+		"id": 3,
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/dynamic/person_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"labels": ["person"],
+		"properties": ["@id", "firstName", "lastName", "gender", "birthday", "creationDate", "locationIP", "browserUsed", "language", "email"]
+	},{
+		"id": 4,
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/dynamic/post_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"labels": ["post"],
+		"properties": ["@id", "imageFile", "creationDate", "locationIP", "browserUsed", "language", "content", "length"]
+	},{
+		"id": 5,
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/static/organisation_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"labels": ["organisation"],
+		"properties": ["@id", "type", "name", "url"]
+	},{
+		"id": 6,
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/static/place_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"labels": ["place"],
+		"properties": ["@id", "name", "url", "type"]
+	},{
+		"id": 7,
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/static/tag_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"labels": ["tag"],
+		"properties": ["@id", "name", "url"]
+	},{
+		"id": 8,
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/static/tagclass_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"labels": ["tagClass"],
+		"properties": ["@id", "name", "url"]
+	}
+],
+"edges": [
+	{
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/dynamic/comment_hasCreator_person_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"label": "hasCreator",
+		"dir": "true",
+		"source": 1,
+		"target": 3,
+		"properties": ["@out", "@in"]
+	},{
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/dynamic/comment_hasTag_tag_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"label": "hasTag",
+		"dir": "true",
+		"source": 1,
+		"target": 7,
+		"properties": ["@out", "@in"]
+	},{
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/dynamic/comment_isLocatedIn_place_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"label": "isLocatedIn",
+		"dir": "true",
+		"source": 1,
+		"target": 6,
+		"properties": ["@out", "@in"]
+	},{
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/dynamic/comment_replyOf_comment_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"label": "replyOf",
+		"dir": "true",
+		"source": 1,
+		"target": 1,
+		"properties": ["@out", "@in"]
+	},{
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/dynamic/comment_replyOf_post_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"label": "replyOf",
+		"dir": "true",
+		"source": 1,
+		"target": 4,
+		"properties": ["@out", "@in"]
+	},{
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/dynamic/forum_containerOf_post_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"label": "containerOf",
+		"dir": "true",
+		"source": 2,
+		"target": 4,
+		"properties": ["@out", "@in"]
+	},{
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/dynamic/forum_hasMember_person_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"label": "hasMember",
+		"dir": "true",
+		"source": 2,
+		"target": 3,
+		"properties": ["@out", "@in", "joinDate"]
+	},{
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/dynamic/forum_hasModerator_person_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"label": "hasModerator",
+		"dir": "true",
+		"source": 2,
+		"target": 3,
+		"properties": ["@out", "@in"]
+	},{
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/dynamic/forum_hasTag_tag_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"label": "hasTag",
+		"dir": "true",
+		"source": 2,
+		"target": 7,
+		"properties": ["@out", "@in"]
+	},{
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/dynamic/person_hasInterest_tag_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"label": "hasInterest",
+		"dir": "true",
+		"source": 3,
+		"target": 7,
+		"properties": ["@out", "@in"]
+	},{
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/dynamic/person_isLocatedIn_place_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"label": "isLocatedIn",
+		"dir": "true",
+		"source": 3,
+		"target": 6,
+		"properties": ["@out", "@in"]
+	},{
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/dynamic/person_knows_person_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"label": "knows",
+		"dir": "true",
+		"source": 3,
+		"target": 3,
+		"properties": ["@out", "@in", "creationDate"]
+	},{
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/dynamic/person_likes_comment_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"label": "likes",
+		"dir": "true",
+		"source": 3,
+		"target": 1,
+		"properties": ["@out", "@in", "creationDate"]
+	},{
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/dynamic/person_likes_post_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"label": "likes",
+		"dir": "true",
+		"source": 3,
+		"target": 4,
+		"properties": ["@out", "@in", "creationDate"]
+	},{
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/dynamic/person_studyAt_organisation_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"label": "studyAt",
+		"dir": "true",
+		"source": 3,
+		"target": 5,
+		"properties": ["@out", "@in", "classYear"]
+	},{
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/dynamic/person_workAt_organisation_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"label": "workAt",
+		"dir": "true",
+		"source": 3,
+		"target": 5,
+		"properties": ["@out", "@in", "workFrom"]
+	},{
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/dynamic/post_hasCreator_person_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"label": "hasCreator",
+		"dir": "true",
+		"source": 4,
+		"target": 3,
+		"properties": ["@out", "@in"]
+	},{
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/dynamic/post_hasTag_tag_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"label": "hasTag",
+		"dir": "true",
+		"source": 4,
+		"target": 7,
+		"properties": ["@out", "@in"]
+	},{
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/dynamic/post_isLocatedIn_place_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"label": "isLocatedIn",
+		"dir": "true",
+		"source": 4,
+		"target": 6,
+		"properties": ["@out", "@in"]
+	},{
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/static/organisation_isLocatedIn_place_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"label": "isLocatedIn",
+		"dir": "true",
+		"source": 5,
+		"target": 6,
+		"properties": ["@out", "@in"]
+	},{
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/static/place_isPartOf_place_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"label": "isPartOf",
+		"dir": "true",
+		"source": 6,
+		"target": 6,
+		"properties": ["@out", "@in"]
+	},{
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/static/tag_hasType_tagclass_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"label": "hasType",
+		"dir": "true",
+		"source": 7,
+		"target": 8,
+		"properties": ["@out", "@in"]
+	},{
+		"file": "~/social_network-csv_basic-longdateformatter-sf100/static/tagclass_isSubclassOf_tagclass_0_0.csv",
+		"delimiter": "|",
+		"header": "true",
+		"label": "isSubclassOf",
+		"dir": "true",
+		"source": 8,
+		"target": 8,
+		"properties": ["@out", "@in"]
+	}
+]}
