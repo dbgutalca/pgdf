@@ -88,7 +88,7 @@ public class CSV2JSONConverter extends CSVConverter{
             try (BufferedReader br = new BufferedReader(new FileReader(edgeFilename))) {
                 if (ec.hasHeader())
                     br.readLine();
-                String line;
+                //String line;
                 int count = 1;
                 boolean first = true;
                 while ((line = br.readLine()) != null) {
