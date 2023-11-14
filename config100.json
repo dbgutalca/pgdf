@@ -19,7 +19,7 @@
 		"delimiter": "|",
 		"header": "true",
 		"labels": ["person"],
-		"properties": ["@id", "firstName", "lastName", "gender", "birthday", "creationDate", "locationIP", "browserUsed", "language", "email"]
+		"properties": ["@id", "firstName", "lastName", "gender", "birthday", "creationDate", "locationIP", "browserUsed"]
 	},{
 		"id": 4,
 		"file": "/root/social_network-csv_basic-longdateformatter-sf100/dynamic/post_0_0.csv",

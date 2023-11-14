@@ -48,7 +48,6 @@ public class CSV2JSONConverter extends CSVConverter{
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        String line = null;
         for (String nodeFilename : this.nodeConfigs.keySet()) {
             try (BufferedReader br = new BufferedReader(new FileReader(nodeFilename))) {
                 NodeConfig nc = this.nodeConfigs.get(nodeFilename);
@@ -56,7 +55,7 @@ public class CSV2JSONConverter extends CSVConverter{
                 String labels = "\""+String.join("\", \"", nc.getLabels())+"\"";
                 if (nc.hasHeader())
                     br.readLine();
-
+                String line;
                 boolean first = true;
                 while ((line = br.readLine()) != null) {
                     if (!first) fileWriter.write(",");
@@ -72,9 +71,6 @@ public class CSV2JSONConverter extends CSVConverter{
                 }
             } catch (IOException e) {
                 System.err.println("An error occurred while reading node file "+nodeFilename);
-            } catch (ArrayIndexOutOfBoundsException ie) {
-                System.out.println(line);
-                System.out.println(this.nodeConfigs.get(nodeFilename).getProperties());
             }
         }
         for (String edgeFilename : this.edgeConfigs.keySet()) {
@@ -88,7 +84,7 @@ public class CSV2JSONConverter extends CSVConverter{
             try (BufferedReader br = new BufferedReader(new FileReader(edgeFilename))) {
                 if (ec.hasHeader())
                     br.readLine();
-                //String line;
+                String line;
                 int count = 1;
                 boolean first = true;
                 while ((line = br.readLine()) != null) {
