@@ -39,8 +39,6 @@ public class CSV2GraphSONConverter extends CSVConverter{
         Map<String, Integer> propIds = new HashMap<>();
         int currentPropId = Integer.MAX_VALUE;
         for (String nodeFilename : this.nodeConfigs.keySet()) {
-            System.out.println("NODE");
-            System.out.println(nodeFilename);
             NodeConfig nc = this.nodeConfigs.get(nodeFilename);
             String line;
             try (BufferedReader br = new BufferedReader(new FileReader(nodeFilename))) {
