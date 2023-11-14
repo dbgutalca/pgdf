@@ -6,6 +6,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.io.*;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
 import java.util.*;
 
 public abstract class CSVConverter {
@@ -67,20 +69,45 @@ public abstract class CSVConverter {
                 .replace("+", "\\+");
     }
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
         String jsonPath = args[1];
         String outputPath = args[2];
-        long start = System.nanoTime();
+        long start;
+        CSVConverter c;
         switch (args[0]) {
-            case "yarspg" -> new CSV2YarsPGConverter(jsonPath, outputPath).convert("graph.yarspg");
-            case "pgdf" -> new CSV2PGDFConverter(jsonPath, outputPath).convert("graph.pgdf");
-            case "graphml" -> new CSV2GraphMLConverter(jsonPath, outputPath).convert("graph.gml");
-            case "json" -> new CSV2JSONConverter(jsonPath, outputPath).convert("graph.json");
-            case "graphson" -> new CSV2GraphSONConverter(jsonPath, outputPath).convert("graph.graphson");
+            case "yarspg" -> {
+                c = new CSV2YarsPGConverter(jsonPath, outputPath);
+                start = System.nanoTime();
+                c.convert("graph.yarspg");
+            }
+            case "pgdf" -> {
+                c = new CSV2PGDFConverter(jsonPath, outputPath);
+                start = System.nanoTime();
+                c.convert("graph.pgdf");
+            }
+            case "graphml" -> {
+                c = new CSV2GraphMLConverter(jsonPath, outputPath);
+                start = System.nanoTime();
+                c.convert("graph.graphml");
+            }
+            case "json" -> {
+                c = new CSV2JSONConverter(jsonPath, outputPath);
+                start = System.nanoTime();
+                c.convert("graph.json");
+            }
+            case "graphson" -> {
+                c = new CSV2GraphSONConverter(jsonPath, outputPath);
+                start = System.nanoTime();
+                c.convert("graph.graphson");
+            }
             default -> throw new UnsupportedOperationException("CSV conversion to " + args[0] + " not supported");
         }
         long end = System.nanoTime();
+        System.out.println(args[0]);
         System.out.println((end-start)/10e9);
+        System.out.println("File Size: " + Files.size(
+                FileSystems.getDefault().getPath(outputPath+"/graph."+args[0])) + " bytes");
+        System.out.println("-------");
     }
 
     public void convert(String filename){
