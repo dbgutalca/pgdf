@@ -107,6 +107,7 @@ public abstract class CSVConverter {
         System.out.println("Elapsed Time: "+(end-start)/10e9+" sec.");
         System.out.println("File Size: " + Files.size(
                 FileSystems.getDefault().getPath(outputPath+"/graph."+args[0]))/(1024.0*1024) + " MB");
+        Files.delete(FileSystems.getDefault().getPath(outputPath+"/graph."+args[0]));
         System.out.println("-------");
     }
 
