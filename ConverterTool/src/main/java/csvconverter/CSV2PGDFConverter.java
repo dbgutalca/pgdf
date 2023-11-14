@@ -45,24 +45,30 @@ public class CSV2PGDFConverter extends CSVConverter{
             int tdx = ec.getProperties().indexOf("@in");
             ec.getProperties().remove(tdx);
             try (BufferedReader br = new BufferedReader(new FileReader(edgeFilename))) {
-                fileWriter.write("@id|@label|@dir|@out|@in|"+String.join("|", ec.getProperties())+"\n");
+                if (!generateId)
+                    fileWriter.write("@id|");
+                fileWriter.write("@label|@dir|@out|@in|"+String.join("|", ec.getProperties())+"\n");
                 String line;
-                int count = 1;
                 if (ec.hasHeader())
                     br.readLine();
                 while ((line = br.readLine()) != null) {
                     String[] parts = line.split(ec.getDelimiter());
-                    String id = generateId? String.valueOf(count) : parts[idx];
+                    String id = generateId? "" : parts[idx];
                     String src = parts[generateId? sdx : sdx+1];
                     String tgt = parts[generateId? tdx+1 : tdx+2];
                     String dir = ec.isDir()? "T": "F";
-                    if (ec.getProperties().size()==0)
-                        fileWriter.write(id+"|"+ec.getLabels().get(0)+"|"+dir+"|"+src+"|"+tgt+"\n");
-                    else
-                        fileWriter.write(id+"|"+ec.getLabels().get(0)+"|"+dir+"|"+src+"|"+tgt+"|"
+                    if (ec.getProperties().size()==0) {
+                        if (!generateId)
+                            fileWriter.write(id + "|");
+                        fileWriter.write(ec.getLabels().get(0) + "|" + dir + "|" + src + "|" + tgt + "\n");
+                    }
+                    else {
+                        if (!generateId)
+                            fileWriter.write(id+"|");
+                        fileWriter.write(ec.getLabels().get(0)+"|"+dir+"|"+src+"|"+tgt+"|"
                                 +Arrays.stream(parts).filter(x-> !Objects.equals(x, id) && !Objects.equals(x, src) && !Objects.equals(x, tgt))
                                 .collect(Collectors.joining("|"))+"\n");
-                    count++;
+                    }
                 }
             } catch (IOException e) {
                 System.err.println("An error occurred while reading edge file "+edgeFilename);
