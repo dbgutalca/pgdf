@@ -104,9 +104,9 @@ public abstract class CSVConverter {
         }
         long end = System.nanoTime();
         System.out.println(args[0]);
-        System.out.println((end-start)/10e9);
+        System.out.println("Elapsed Time: "+(end-start)/10e9+" sec.");
         System.out.println("File Size: " + Files.size(
-                FileSystems.getDefault().getPath(outputPath+"/graph."+args[0])) + " bytes");
+                FileSystems.getDefault().getPath(outputPath+"/graph."+args[0]))/1024 + " KB");
         System.out.println("-------");
     }
 
