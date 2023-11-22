@@ -6,6 +6,8 @@ import Objects.Node;
 import Objects.Property;
 
 import java.io.*;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -22,36 +24,59 @@ public class CSV2MemoryConverter extends CSVConverter {
     @Override
     protected void makefile(FileWriter fileWriter) {
         GraphMemory g = readGraph();
+        long start = 0, end = 0;
         switch (format){
             case "pgdf"-> {
                 try {
+                    start = System.nanoTime();
                     makepgdf(g, fileWriter);
+                    end = System.nanoTime();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
             case "yarspg" -> {
                 try {
+                    start = System.nanoTime();
                     makeyarspg(g, fileWriter);
+                    end = System.nanoTime();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
             case "graphml" -> {
                 try {
+                    start = System.nanoTime();
                     makegraphml(g, fileWriter);
+                    end = System.nanoTime();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
             case "json" -> {
                 try {
+                    start = System.nanoTime();
                     makejson(g, fileWriter);
+                    end = System.nanoTime();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
         }
+        System.out.println(format);
+        System.out.println("Elapsed Time: "+(end-start)/10e9+" sec.");
+        try {
+            System.out.println("File Size: " + Files.size(
+                    FileSystems.getDefault().getPath(outputPath+"/graph."+format))/(1024.0*1024) + " MB");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            Files.delete(FileSystems.getDefault().getPath(outputPath+"/memgraph."+format));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("-------");
     }
 
     private GraphMemory readGraph() {
