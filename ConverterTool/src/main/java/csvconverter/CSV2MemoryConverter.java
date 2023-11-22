@@ -250,17 +250,10 @@ public class CSV2MemoryConverter extends CSVConverter {
             first = true;
             for (Node n : g.nodeIdToNode.values().stream().filter(x->x.getLabels().contains(label)).collect(Collectors.toList())) {
                 if (first) {
-                    fileWriter.write("@id|@label|");
-                    fileWriter.write(n.getProperties().stream().map(Property::getKey).collect(Collectors.joining("|")));
-                    fileWriter.write("\n");
+                    fileWriter.write("@id|@label|"+n.getProperties().stream().map(Property::getKey).collect(Collectors.joining("|"))+"\n");
                     first = false;
                 }
-                fileWriter.write(n.getId());
-                fileWriter.write("|");
-                fileWriter.write(label);
-                fileWriter.write("|");
-                fileWriter.write(n.getProperties().stream().map(Property::getValue).collect(Collectors.joining("|")));
-                fileWriter.write("\n");
+                fileWriter.write(n.getId()+"|"+label+"|"+n.getProperties().stream().map(Property::getValue).collect(Collectors.joining("|"))+"\n");
             }
         }
         labels = g.edgeIdToEdge.values().stream().map(Edge::getLabel).collect(Collectors.toSet());
@@ -270,23 +263,14 @@ public class CSV2MemoryConverter extends CSVConverter {
                 if (first) {
                     if (edgeIds)
                         fileWriter.write("@id|");
-                    fileWriter.write("@label|@dir|@out|@in|");
-                    fileWriter.write(e.getProperties().stream().map(Property::getKey).collect(Collectors.joining("|")));
-                    fileWriter.write("\n");
+                    fileWriter.write("@label|@dir|@out|@in|"+e.getProperties().stream().map(Property::getKey).collect(Collectors.joining("|"))+"\n");
                     first = false;
                 }
                 if (edgeIds) {
                     fileWriter.write(e.getId());
                     fileWriter.write("|");
                 }
-                fileWriter.write(label);
-                fileWriter.write("|T|");
-                fileWriter.write(e.getSource());
-                fileWriter.write("|");
-                fileWriter.write(e.getTarget());
-                fileWriter.write("|");
-                fileWriter.write(e.getProperties().stream().map(Property::getValue).collect(Collectors.joining("|")));
-                fileWriter.write("\n");
+                fileWriter.write(label+"|T|"+e.getSource()+"|"+e.getTarget()+"|"+e.getProperties().stream().map(Property::getValue).collect(Collectors.joining("|"))+"\n");
             }
         }
     }
