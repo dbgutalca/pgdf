@@ -6,6 +6,7 @@ package Objects;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  *
@@ -15,8 +16,6 @@ public class Node {
     
     private final String id;
     private final ArrayList<String> labels;
-    private final ArrayList<Edge> inEdges;
-    private final ArrayList<Edge> outEdges;
     private final ArrayList<Property> properties;
     
     
@@ -24,32 +23,12 @@ public class Node {
         
         this.id = id;
         this.labels = new ArrayList<>();
-        this.inEdges = new ArrayList<>();
-        this.outEdges = new ArrayList<>();
         this.properties = new ArrayList<>();
         
     }
     
-    public void addEdgeOutEdges(Edge edge) {
-        this.outEdges.add(edge);
-    }
-    
-    public void addEdgeInEdges(Edge edge) {
-        this.inEdges.add(edge);
-    }
-    
     public boolean addLabel(String label) {
-        if(this.labels.isEmpty()) {
-            if(!this.labels.contains(label)){
-                this.labels.add(label);
-                return true;
-            }
-        }
-        else{
-            this.labels.add(label);
-            return true;
-        }
-        return false;
+        return this.labels.add(label);
     }
     
     public boolean addProperty(Property property) {
@@ -73,16 +52,24 @@ public class Node {
         return labels;
     }
     
-    public ArrayList<Edge> getInEdges() {
-        return inEdges;
-    }
-    
-    public ArrayList<Edge> getOutEdges() {
-        return outEdges;
-    }
-    
     public ArrayList<Property> getProperties() {
         return properties;
     }
 
+    public void addLabels(List<String> labels) {
+        this.labels.addAll(labels);
+    }
+
+    public void addProperties(List<Property> properties) {
+        this.properties.addAll(properties);
+    }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "id='" + id + '\'' +
+                ", labels=" + labels +
+                ", properties=" + properties +
+                '}';
+    }
 }

@@ -10,9 +10,6 @@ package Objects;
  */
 public abstract class Graph {
     
-    
-    public abstract void Graph();
-    
     public abstract void addNode(Node node);
     public abstract void addEdge(Edge edge);
     

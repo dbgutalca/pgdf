@@ -70,10 +70,19 @@ public abstract class CSVConverter {
     }
 
     public static void main(String[] args) throws IOException {
-        String jsonPath = args[1];
-        String outputPath = args[2];
+        String jsonPath;
+        String outputPath;
         long start;
         CSVConverter c;
+        if(args[0].equals("--memory")){
+            jsonPath = args[2];
+            outputPath = args[3];
+            c = new CSV2MemoryConverter(jsonPath, outputPath, args[1]);
+            c.convert("memgraph."+args[1]);
+            return;
+        }
+        jsonPath = args[1];
+        outputPath = args[2];
         switch (args[0]) {
             case "yarspg" -> {
                 c = new CSV2YarsPGConverter(jsonPath, outputPath);
@@ -107,7 +116,7 @@ public abstract class CSVConverter {
         System.out.println("Elapsed Time: "+(end-start)/10e9+" sec.");
         System.out.println("File Size: " + Files.size(
                 FileSystems.getDefault().getPath(outputPath+"/graph."+args[0]))/(1024.0*1024) + " MB");
-        Files.delete(FileSystems.getDefault().getPath(outputPath+"/graph."+args[0]));
+        //Files.delete(FileSystems.getDefault().getPath(outputPath+"/graph."+args[0]));
         System.out.println("-------");
     }
 

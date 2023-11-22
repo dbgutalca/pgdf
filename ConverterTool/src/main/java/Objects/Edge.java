@@ -30,8 +30,7 @@ public class Edge {
         this.undirected = false;
     }
     
-    public boolean addProperty(Property property){
-        
+    public boolean addProperty(Property property) {
         if(!this.properties.contains(property)){
             this.properties.add(property);
             return true;
