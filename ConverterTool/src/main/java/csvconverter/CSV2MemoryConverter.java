@@ -35,6 +35,15 @@ public class CSV2MemoryConverter extends CSVConverter {
                     throw new RuntimeException(e);
                 }
             }
+            case "pgdf2"-> {
+                try {
+                    start = System.nanoTime();
+                    makepgdf2(g, fileWriter);
+                    end = System.nanoTime();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
             case "yarspg" -> {
                 try {
                     start = System.nanoTime();
@@ -62,6 +71,11 @@ public class CSV2MemoryConverter extends CSVConverter {
                     throw new RuntimeException(e);
                 }
             }
+        }
+        try {
+            fileWriter.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
         System.out.println(format);
         System.out.println("Elapsed Time: "+(end-start)/10e9+" sec.");
@@ -266,6 +280,34 @@ public class CSV2MemoryConverter extends CSVConverter {
                 }
                 fileWriter.write(label+"|T|"+e.getSource()+"|"+e.getTarget()+"|"+e.getProperties().stream().map(Property::getValue).collect(Collectors.joining("|"))+"\n");
             }
+        }
+    }
+
+    public void makepgdf2(GraphMemory g, FileWriter fileWriter) throws IOException {
+        List<String> currentSchema = null;
+        for (Node n : g.nodeIdToNode.values()) {
+            List<String> nodeSchema = n.getProperties().stream().map(x->x.getKey()).collect(Collectors.toList());
+            if (!nodeSchema.equals(currentSchema)) {
+                currentSchema = nodeSchema;
+                fileWriter.write("@id|@label|");
+                fileWriter.write(String.join("|", currentSchema));
+                fileWriter.write("\n");
+            }
+            fileWriter.write(n.getId()+"|"+n.getLabels().get(0)+"|");
+            fileWriter.write(n.getProperties().stream().map(Property::getValue).collect(Collectors.joining("|")));
+            fileWriter.write("\n");
+        }
+        for (Edge e : g.edgeIdToEdge.values()) {
+            List<String> edgeSchema = e.getProperties().stream().map(x->x.getKey()).collect(Collectors.toList());
+            if (!edgeSchema.equals(currentSchema)) {
+                currentSchema = edgeSchema;
+                fileWriter.write("@label|@dir|@out|@in|");
+                fileWriter.write(String.join("|", currentSchema));
+                fileWriter.write("\n");
+            }
+            fileWriter.write("\n"+e.getLabel()+"|T|"+e.getSource()+"|"+e.getTarget()+"|");
+            fileWriter.write(e.getProperties().stream().map(Property::getValue).collect(Collectors.joining("|")));
+            fileWriter.write("\n");
         }
     }
 }
