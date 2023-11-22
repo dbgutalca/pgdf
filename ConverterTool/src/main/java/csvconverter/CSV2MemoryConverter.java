@@ -187,14 +187,8 @@ public class CSV2MemoryConverter extends CSVConverter {
         fileWriter.write("\t<key id=\"labelV\" for=\"node\" attr.name=\"labelV\" attr.type=\"string\"/>\n");
         fileWriter.write("\t<key id=\"labelE\" for=\"edge\" attr.name=\"labelE\" \"attr.type=\"string\"/>\n");
         String propertyPattern = "\t<key id=\"%s\" for=\"%s\" attr.name=\"%s\" \"attr.type=\"string\"/>\n";
-        Set<String> nProps = new HashSet<>();
-        Set<String> eProps = new HashSet<>();
-        for (Node n : g.nodeIdToNode.values()) {
-            nProps.addAll(n.getProperties().stream().map(Property::getKey).collect(Collectors.toSet()));
-        }
-        for (Edge e : g.edgeIdToEdge.values()) {
-            eProps.addAll(e.getProperties().stream().map(Property::getKey).collect(Collectors.toSet()));
-        }
+        Set<String> nProps = nodeConfigs.values().stream().flatMap(x -> x.getProperties().stream()).filter(t -> !t.startsWith("@")).collect(Collectors.toSet());
+        Set<String> eProps = edgeConfigs.values().stream().flatMap(x -> x.getProperties().stream()).filter(t -> !t.startsWith("@")).collect(Collectors.toSet());
         int pcount = 0;
         for (String p : nProps) {
             fileWriter.write(String.format(propertyPattern, pcount++, "node", p));
