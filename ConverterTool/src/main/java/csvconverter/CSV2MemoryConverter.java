@@ -244,7 +244,7 @@ public class CSV2MemoryConverter extends CSVConverter {
     }
 
     private void makepgdf(GraphMemory g, FileWriter fileWriter) throws IOException {
-        Set<String> labels = g.nodeIdToNode.values().stream().flatMap(x->x.getLabels().stream()).collect(Collectors.toSet());
+        Set<String> labels = nodeConfigs.values().stream().flatMap(x->x.getLabels().stream()).collect(Collectors.toSet());
         boolean first;
         for (String label : labels){
             first = true;
@@ -256,7 +256,7 @@ public class CSV2MemoryConverter extends CSVConverter {
                 fileWriter.write(n.getId()+"|"+label+"|"+n.getProperties().stream().map(Property::getValue).collect(Collectors.joining("|"))+"\n");
             }
         }
-        labels = g.edgeIdToEdge.values().stream().map(Edge::getLabel).collect(Collectors.toSet());
+        labels = edgeConfigs.values().stream().flatMap(x->x.getLabels().stream()).collect(Collectors.toSet());
         for (String label : labels){
             first = true;
             for (Edge e : g.edgeIdToEdge.values().stream().filter(x->x.getLabel().equals(label)).collect(Collectors.toList())) {
