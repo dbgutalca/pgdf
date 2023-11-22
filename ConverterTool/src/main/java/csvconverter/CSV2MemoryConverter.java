@@ -67,7 +67,7 @@ public class CSV2MemoryConverter extends CSVConverter {
         System.out.println("Elapsed Time: "+(end-start)/10e9+" sec.");
         try {
             System.out.println("File Size: " + Files.size(
-                    FileSystems.getDefault().getPath(outputPath+"/graph."+format))/(1024.0*1024) + " MB");
+                    FileSystems.getDefault().getPath(outputPath+"/memgraph."+format))/(1024.0*1024) + " MB");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
