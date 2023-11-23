@@ -1,56 +1,56 @@
 { "nodes": [
 	{
 		"id": 1,
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/dynamic/comment_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/dynamic/comment_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"labels": ["comment"],
 		"properties": ["@id", "creationDate", "locationIP", "browserUsed", "content", "length"]
 	},{
 		"id": 2,
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/dynamic/forum_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/dynamic/forum_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"labels": ["forum"],
 		"properties": ["@id", "title" , "creationDate"]
 	},{
 		"id": 3,
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/dynamic/person_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/dynamic/person_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"labels": ["person"],
 		"properties": ["@id", "firstName", "lastName", "gender", "birthday", "creationDate", "locationIP", "browserUsed", "language", "email"]
 	},{
 		"id": 4,
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/dynamic/post_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/dynamic/post_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"labels": ["post"],
 		"properties": ["@id", "imageFile", "creationDate", "locationIP", "browserUsed", "language", "content", "length"]
 	},{
 		"id": 5,
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/static/organisation_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/static/organisation_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"labels": ["organisation"],
 		"properties": ["@id", "type", "name", "url"]
 	},{
 		"id": 6,
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/static/place_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/static/place_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"labels": ["place"],
 		"properties": ["@id", "name", "url", "type"]
 	},{
 		"id": 7,
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/static/tag_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/static/tag_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"labels": ["tag"],
 		"properties": ["@id", "name", "url"]
 	},{
 		"id": 8,
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/static/tagclass_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/static/tagclass_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"labels": ["tagClass"],
@@ -59,7 +59,7 @@
 ],
 "edges": [
 	{
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/dynamic/comment_hasCreator_person_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/dynamic/comment_hasCreator_person_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"label": "1hasCreator",
@@ -68,7 +68,7 @@
 		"target": 3,
 		"properties": ["@out", "@in"]
 	},{
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/dynamic/comment_hasTag_tag_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/dynamic/comment_hasTag_tag_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"label": "2hasTag",
@@ -77,7 +77,7 @@
 		"target": 7,
 		"properties": ["@out", "@in"]
 	},{
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/dynamic/comment_isLocatedIn_place_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/dynamic/comment_isLocatedIn_place_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"label": "3isLocatedIn",
@@ -86,7 +86,7 @@
 		"target": 6,
 		"properties": ["@out", "@in"]
 	},{
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/dynamic/comment_replyOf_comment_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/dynamic/comment_replyOf_comment_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"label": "4replyOf",
@@ -95,7 +95,7 @@
 		"target": 1,
 		"properties": ["@out", "@in"]
 	},{
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/dynamic/comment_replyOf_post_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/dynamic/comment_replyOf_post_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"label": "5replyOf",
@@ -104,7 +104,7 @@
 		"target": 4,
 		"properties": ["@out", "@in"]
 	},{
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/dynamic/forum_containerOf_post_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/dynamic/forum_containerOf_post_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"label": "6containerOf",
@@ -113,7 +113,7 @@
 		"target": 4,
 		"properties": ["@out", "@in"]
 	},{
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/dynamic/forum_hasMember_person_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/dynamic/forum_hasMember_person_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"label": "7hasMember",
@@ -122,7 +122,7 @@
 		"target": 3,
 		"properties": ["@out", "@in", "joinDate"]
 	},{
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/dynamic/forum_hasModerator_person_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/dynamic/forum_hasModerator_person_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"label": "8hasModerator",
@@ -131,7 +131,7 @@
 		"target": 3,
 		"properties": ["@out", "@in"]
 	},{
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/dynamic/forum_hasTag_tag_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/dynamic/forum_hasTag_tag_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"label": "9hasTag",
@@ -140,7 +140,7 @@
 		"target": 7,
 		"properties": ["@out", "@in"]
 	},{
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/dynamic/person_hasInterest_tag_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/dynamic/person_hasInterest_tag_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"label": "ahasInterest",
@@ -149,7 +149,7 @@
 		"target": 7,
 		"properties": ["@out", "@in"]
 	},{
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/dynamic/person_isLocatedIn_place_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/dynamic/person_isLocatedIn_place_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"label": "bisLocatedIn",
@@ -158,7 +158,7 @@
 		"target": 6,
 		"properties": ["@out", "@in"]
 	},{
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/dynamic/person_knows_person_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/dynamic/person_knows_person_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"label": "cknows",
@@ -167,7 +167,7 @@
 		"target": 3,
 		"properties": ["@out", "@in", "creationDate"]
 	},{
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/dynamic/person_likes_comment_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/dynamic/person_likes_comment_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"label": "dlikes",
@@ -176,7 +176,7 @@
 		"target": 1,
 		"properties": ["@out", "@in", "creationDate"]
 	},{
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/dynamic/person_likes_post_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/dynamic/person_likes_post_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"label": "elikes",
@@ -185,7 +185,7 @@
 		"target": 4,
 		"properties": ["@out", "@in", "creationDate"]
 	},{
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/dynamic/person_studyAt_organisation_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/dynamic/person_studyAt_organisation_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"label": "fstudyAt",
@@ -194,7 +194,7 @@
 		"target": 5,
 		"properties": ["@out", "@in", "classYear"]
 	},{
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/dynamic/person_workAt_organisation_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/dynamic/person_workAt_organisation_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"label": "gworkAt",
@@ -203,7 +203,7 @@
 		"target": 5,
 		"properties": ["@out", "@in", "workFrom"]
 	},{
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/dynamic/post_hasCreator_person_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/dynamic/post_hasCreator_person_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"label": "hhasCreator",
@@ -212,7 +212,7 @@
 		"target": 3,
 		"properties": ["@out", "@in"]
 	},{
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/dynamic/post_hasTag_tag_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/dynamic/post_hasTag_tag_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"label": "ihasTag",
@@ -221,7 +221,7 @@
 		"target": 7,
 		"properties": ["@out", "@in"]
 	},{
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/dynamic/post_isLocatedIn_place_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/dynamic/post_isLocatedIn_place_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"label": "jisLocatedIn",
@@ -230,7 +230,7 @@
 		"target": 6,
 		"properties": ["@out", "@in"]
 	},{
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/static/organisation_isLocatedIn_place_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/static/organisation_isLocatedIn_place_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"label": "kisLocatedIn",
@@ -239,7 +239,7 @@
 		"target": 6,
 		"properties": ["@out", "@in"]
 	},{
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/static/place_isPartOf_place_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/static/place_isPartOf_place_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"label": "lisPartOf",
@@ -248,7 +248,7 @@
 		"target": 6,
 		"properties": ["@out", "@in"]
 	},{
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/static/tag_hasType_tagclass_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/static/tag_hasType_tagclass_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"label": "mhasType",
@@ -257,7 +257,7 @@
 		"target": 8,
 		"properties": ["@out", "@in"]
 	},{
-		"file": "/mnt/disks/disk-1/social_network-csv_composite-longdateformatter-sf0.1/static/tagclass_isSubclassOf_tagclass_0_0.csv",
+		"file": "/mnt/disks/disk-2/social_network-csv_composite-longdateformatter-sf0.1/static/tagclass_isSubclassOf_tagclass_0_0.csv",
 		"delimiter": "|",
 		"header": "true",
 		"label": "nisSubclassOf",
